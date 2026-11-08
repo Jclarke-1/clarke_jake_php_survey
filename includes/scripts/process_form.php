@@ -3,7 +3,6 @@
 session_start();
 
 // require_once because we only need to import our css file once for our form, ../ to go into the our directory, find our folder and then link into the css folder and the main.css file
-require_once("../clarke_jake_php_survey/css/main.css");
 //open the directory and locate our helpers.php within the directory so we can call for it as well
 require_once __DIR__ . '/../helpers.php';
 
@@ -49,7 +48,7 @@ if(!filter_var($email, FILTER_VALIDATE_EMAIL)) {
 }
 
 //redirect our browser back to signup-form.php once submitted
-header('Location: signup-form.php');
+header('Location: /../clarke_jake_php_survey/signup-form.php');
 
 
 $nickName = $formInput['nickname'];
@@ -58,6 +57,9 @@ if(strlen($nickName) < 2 || strlen($nickName) > 20) {
 }
 
 $age = $formInput['age'];
+if(strlen($age) < 2 || strlen($nickName) > 3) {
+    $errors[$nickName] = 'Age cannot be more than 3 characters and less than 2 characters';
+}
 
 $hobby = $formInput['hobby'];
 if(strlen($hobby) < 4 || strlen($hobby) > 40) {
@@ -128,5 +130,82 @@ if(!in_array($likes, $enjoy)) {
     $errors['enjoyment'] = $likes . 'is not valid entertainment';
 }
 }
+
+$selfDescriptor = $formInput['self-descriptor'];
+if(strlen($selfDescriptor) < 20 || strlen($selfDescriptor) > 250) {
+    $errors[$selfDescriptor] = 'Self Descriptor must be more than 20 and less then 250 characters.';
+}
+
+$friendQualities = $formInput['friend-qualities'];
+if(strlen($friendQualities) < 20 || strlen($friendQualities) > 250) {
+    $errors[$friendQualities] = 'Friend Quality requirements must be 20 and less than 250 characters.';
+}
+
+$musicGenre = $formInput['music-genre'] ?? [];
+if (!is_array($musicGenre)) {
+    $errors['music-genre'] = 'Music Genre is invalid';
+}
+$validGenres = ['pop', 'rock', 'metal', 'heavy-metal', 'alternative', 'classical', 'rap', '90s', 'kpop', 'jpop', 'vocaloid', 'punk'];
+if(count($musicGenre) > count($validGenres)) {
+    $errors['music-genre'] = 'Music Genre is invalid.';
+}
+foreach($musicGenre as $genre) {
+    if (! in_array($genre, $validGenres)) {
+        $errors['music-genre'] = $genre . 'is not a valid genre';
+    }
+}
+
+$favFood = $formInput['food'] ?? [];
+if(!is_array($favFood)) {
+    $errors['food'] = 'Favourite Food is invalid';
+}
+$validFoods = ['spaghetti', 'sushi', 'hamburger', 'hotdog', 'pizza', 'curry', 'soup/stew'];
+if(count($favFood) > count($validFoods)) {
+    $errors['food'] = 'Favourite Food is invalid';
+}
+foreach($favFood as $food) {
+    if(!in_array($food, $validFoods)) {
+        $errors['food'] = $food . 'is not a valid favourite food';
+    }
+}
+
+$favSeason = $formInput['season'] ?? [];
+if(!is_array($favSeason)) {
+    $errors['season'] = 'Season is invalid';
+}
+$validSeasons = ['fall', 'winter', 'spring', 'summer'];
+if(count($favSeason) > count($validSeasons)) {
+    $errors['season'] = 'Season is invalid';
+}
+foreach($favSeason as $season) {
+    if(!in_array($season, $validSeasons)) {
+        $errors['season'] = $season . 'is not a valid favourite season';
+    }
+}
+
+$weakQuality = $formInput['weakness'] ?? [];
+if(!is_array($weakQuality)) {
+    $errors['weakness'] = 'Weak Quality invalid';
+}
+$validQualities = ['time-management', 'disorganized', 'pessimistic', 'shy', 'too-honest'];
+if(count($weakQuality) > count($validQualities)) {
+    $errors['weakness'] = 'Weak Quality is invalid';
+}
+foreach($weakQuality as $weakness) {
+    if(!in_array($weakness, $validQualities)) {
+        $errors['weakness'] = $weakness . 'is not a valid weakness';
+    }
+}
+
+$_SESSION['form_errors'] = $errors;
+
+if(count($errors) === 0) {
+    $to = 'friendfinder@gmail.com';
+    $subject = 'New Friend Application';
+    $message = '';
+
+    mail($to, $subject, $message);
+}
+
 
 ?>
