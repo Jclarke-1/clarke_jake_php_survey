@@ -1,16 +1,12 @@
 <?php
 
-require_once("../clarke_jake_php_survey/css/main.css");
-
 ?>
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-         <link href="css/grid.css" rel="stylesheet">
+    <link href="css/grid.css" rel="stylesheet">
     <link href="css/main.css" rel="stylesheet">
     <title>New Friend Signup Form!</title>
 </head>
@@ -58,43 +54,84 @@ require_once("../clarke_jake_php_survey/css/main.css");
 
         <!-- Three Multiple Choice Answers -->
         <div>
-            <label for="animal">Whats your favourite animals?</label>
-            <!-- im using the multiple value here for our select to allow the user to select more than one answer for our multiple choice answers below, if i were to use multiple size:1 it would display it as a dropdown but i don't want that so I chose to only use the multiple value and it's intial size value -->
-            <select id="animal" name="animal" multiple>
-            <option value="bird">Bird</option>
-             <option value="dog">Dog</option>
-              <option value="cat">Cat</option>
-               <option value="capybara">Capybara</option>
-                <option value="seal">Seal</option>
-                 <option value="bear">Bear</option>
-            </select>
+            <fieldset>
+            <legend>Whats your favourite animals?</legend>
+
+            <label for="bird">Bird</label>
+            <input id="bird" type="checkbox" name="animals[]" value="bird">
+
+             <label for="dog">Dog</label>
+             <input id="dog" type="checkbox" name="animals[]" value="dog">
+
+              <label for="cat">Cat</label>
+              <input id="cat" type="checkbox" name="animals[]" value="cat">
+
+               <label for="capybara">Capybara</label>
+               <input id="capybara" type="checkbox" name="animals[]" value="capybara">
+
+                <label for="seal">Seal</label>
+                <input id="seal" type="checkbox" name="animals[]" value="seal">
+
+                 <label for="bear">Bear</label>
+                 <input id="bear" type="checkbox" name="animals[]" value="bear">
+
+            </fieldset>
         </div>
 
           <div>
-            <label for="describe">Choose a few words from below to describe yourself</label>
-            <select id="describe" name="describe" multiple>
-            <option value="extroverted">Extroverted</option>
-             <option value="introverted">Introverted</option>
-              <option value="creative">Creative</option>
-               <option value="ambitious">Ambitious</option>
-                <option value="adventerous">Adventerous</option>
-                 <option value="honest">Honest</option>
-            </select>
+            <fieldset>
+            <legend>Choose a few words from below to describe yourself</legend>
+
+            <label for="extroverted">Extroverted</label>
+            <input id="extroverted" type="checkbox" name="descriptor[]" value="extroverted">
+
+             <label for="introverted">Introverted</label>
+             <input id="introverted" type="checkbox" name="descriptor[]" value="introverted">
+
+              <label for="creative">Creative</label>
+              <input id="creative" type="checkbox" name="descriptor[]" value="creative">
+
+               <label for="ambitious">Ambitious</label>
+               <input id="amibitious" type="checkbox" name="descriptor[]" value="ambitious">
+
+                <label for="adventurous">Adventurous</label>
+                <input id="adventurous" type="checkbox" name="descriptor[]" value="adventurous">
+                
+                 <label for="honest">Honest</label>
+                 <input id="honest" type="checkbox" name="descriptor[]" value="honest">
+
+            </fieldset>
         </div>
 
            <div>
-            <label for="likes">Choose a few options from below based on what you enjoy</label>
-            <select id="likes" name="likes" multiple>
-            <option value="music">Music</option>
-            <option value="art">Art</option>
-            <option value="writing">Writing</option>
-            <option value="working-out">Working Out</option>
-            <option value="sports">Sports</option>
-            <option value="movies">Movies</option>
-            <option value="dance">Dance</option>
-            <option value="theatre">Theatre</option>
-            <option value="swimming">Swimming</option>
-            </select>
+            <legend>Choose a few options from below based on what you enjoy</legend>
+          <fieldset>
+
+            <label for="music">Music</label>
+             <input id="music" type="checkbox" name="enjoyment[]" value="music">
+
+            <label for="art">Art</label>
+            <input id="art" type="checkbox" name="enjoyment[]" value="art">
+
+            <label for="writing">Writing</label>
+            <input id="writing" type="checkbox" name="enjoyment[]" value="writing">
+
+            <label for="working-out">Working Out</label>
+            <input id="working-out" type="checkbox" name="enjoyment[]" value="working-out">
+
+            <label for="sports">Sports</label>
+            <input id="sports" type="checkbox" name="enjoyment[]" value="sports">
+
+            <label for="movies">Movies</label>
+            <input id="movies" type="checkbox" name="enjoyment[]" value="movies">
+
+            <label for="dance">Dance</label>
+            <input id="dance" type="checkbox" name="enjoyment[]" value="dance">
+
+            <label for="theatre">Theatre</label>
+            <input id="theatre" type="checkbox" name="enjoyment[]" value="theatre">
+
+            </fieldset>
         </div>
 
         <!-- Two long format answers -->

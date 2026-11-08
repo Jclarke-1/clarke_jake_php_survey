@@ -43,10 +43,6 @@ div {
     margin: 30px 0px;
 }
 
-#animal, #describe, #likes {
-    height: 12%;
-}
-
 textarea {
     resize: none;
     width: 50%;
