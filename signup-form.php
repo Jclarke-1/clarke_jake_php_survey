@@ -1,3 +1,10 @@
+<?php
+
+require_once("../clarke_jake_php_survey/css/main.css");
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -176,7 +183,10 @@
             <input name="birthday" type="date" id="birthday" min="1980-04-01" max="2026-04-01">
         </div>
 
+        <footer>
 
+        </footer>
+    <button type="submit">Send</button>
         </form>
     </main>
     
