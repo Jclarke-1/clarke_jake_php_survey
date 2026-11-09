@@ -199,13 +199,13 @@ foreach($weakQuality as $weakness) {
 
 $_SESSION['form_errors'] = $errors;
 
-if(count($errors) === 0) {
-    $to = 'friendfinder@gmail.com';
-    $subject = 'New Friend Application';
-    $message = '';
+// if(count($errors) === 0) {
+//     $to = 'friendfinder@gmail.com';
+//     $subject = 'New Friend Application';
+//     $message = '';
 
-    mail($to, $subject, $message);
-}
+//     mail($to, $subject, $message);
+// }
 
 
 ?>
