@@ -6,6 +6,7 @@ session_start();
 //open the directory and locate our helpers.php within the directory so we can call for it as well
 require_once __DIR__ . '/../helpers.php';
 
+
 //tell the server that the only request type method we want to receive is POST, and if there is any of type of request type, provide an error code and exit with a message telling us it must be a POST request type
 $requestType = $_SERVER['REQUEST_METHOD'];
 // If the request type does not = POST, show error code 500, and exit and display the text 'Request type must be a POST
@@ -32,6 +33,7 @@ if (strlen($name) < 3 || strlen($name) > 40) {
     $errors['name'] = 'Name must be longer than 3 characters and less than 40.';
 }
 
+
 $phoneNumber = $formInput['phone-number'];
 if (!array_key_exists('phone-number', $formInput)) {
     $errors['phone-number'] = 'Phone Number must be filled out.';
@@ -47,18 +49,14 @@ if(!filter_var($email, FILTER_VALIDATE_EMAIL)) {
     $errors['email'] = 'Email Address must be valid.';
 }
 
-//redirect our browser back to signup-form.php once submitted
-header('Location: /../clarke_jake_php_survey/signup-form.php');
-
-
 $nickName = $formInput['nickname'];
 if(strlen($nickName) < 2 || strlen($nickName) > 20) {
     $errors[$nickName] = 'Nickname cannot be less than 2 characters or greater than 20';
 }
 
 $age = $formInput['age'];
-if(strlen($age) < 2 || strlen($nickName) > 3) {
-    $errors[$nickName] = 'Age cannot be more than 3 characters and less than 2 characters';
+if(strlen($age) < 2 || strlen($age) > 3) {
+    $errors[$age] = 'Age cannot be more than 3 characters and less than 2 characters';
 }
 
 $hobby = $formInput['hobby'];
@@ -199,13 +197,18 @@ foreach($weakQuality as $weakness) {
 
 $_SESSION['form_errors'] = $errors;
 
-// if(count($errors) === 0) {
-//     $to = 'friendfinder@gmail.com';
-//     $subject = 'New Friend Application';
-//     $message = '';
 
-//     mail($to, $subject, $message);
-// }
+if(count($errors) === 0) {
+    $to = 'friendfinder@gmail.com';
+    $subject = 'New Friend Application';
+    $message = '';
 
+    mail($to, $subject, $message);
+    //redirect our browser back to signup-form.php once submitted and has no errors
+    header('Location: /../clarke_jake_php_survey/signup-form.php');
+}
+
+prettyDump($formInput);
+prettyDump($errors);
 
 ?>

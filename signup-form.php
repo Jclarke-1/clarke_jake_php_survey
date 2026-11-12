@@ -26,6 +26,7 @@ $submittedWeakness = $submittedInputs['weakness'] ?? '';
 
 
 
+
 //session will reset when the page is reloaded so any left over information is not waiting
 $_SESSION['form_input'] = [];
 //when reloaded any errors will be gone
